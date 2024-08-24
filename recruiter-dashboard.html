@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruiter Dashboard</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            /* display: flex; */
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #5191fd;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffeb3b;
+        }
+
+        .job-list {
+            background-color: white;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-list h2 {
+            font-size: 28px;
+            color: #5191fd;
+            margin-bottom: 20px;
+        }
+
+        .job-card {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-card h3 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .job-card p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .job-card strong {
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #5191fd;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #3f78d5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            margin-top: auto;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">RecruitPro</div>
+        <nav>
+            <ul>
+                <li><a href="post-job.html">Post Job</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="job-list">
+        <h2>Posted Jobs</h2>
+        <div id="jobs-container"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 RecruitPro. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Retrieve jobs from localStorage
+        const jobs = JSON.parse(localStorage.getItem('jobs')) || [];
+        const jobsContainer = document.getElementById('jobs-container');
+
+        if (jobs.length === 0) {
+            jobsContainer.innerHTML = '<p>No jobs available at the moment.</p>';
+        } else {
+            jobs.forEach(job => {
+                const jobElement = document.createElement('div');
+                jobElement.classList.add('job-card');
+                jobElement.innerHTML = `
+                    <h3>Job Title: ${job.title}</h3>
+                    <p><strong>Salary:</strong> ${job.salary} PKR</p>
+                    <p><strong>Description:</strong> ${job.description}</p>
+                    <p><strong>Experience Required:</strong> ${job.experience} years</p>
+                    <p><strong>Incentive:</strong> ${job.incentive} PKR</p>
+                    <button class="btn" onclick='viewJobDetails(${JSON.stringify(job)})'>View Details</button>
+                `;
+                jobsContainer.appendChild(jobElement);
+            });
+        }
+
+        function viewJobDetails(job) {
+            // store the selected job in local storage
+            localStorage.setItem('selectedJob', JSON.stringify(job));
+            // redirect to job details page
+            window.location.href = 'job-details.html';
+        }
+    </script>
+</body>
+</html>

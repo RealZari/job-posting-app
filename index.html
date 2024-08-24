@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruitment Platform</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #5191fd;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-right: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 1000;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffeb3b;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #50caa3, #1d664f);
+            color: white;
+            margin-top: 3px;
+            flex: 1;
+            
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 40px;
+            margin-bottom: 30px;
+        }
+
+        .cta-btn {
+            background-color: #ffeb3b;
+            color: #333;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #ffc107;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4px;
+            background-color: #333;
+            color: white;
+            width: 100%;
+            margin-top: auto;
+           
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">RecruitPro</div>
+        <nav>
+            <ul>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Connecting the Best Talent</h1>
+        <p>Your go-to platform for recruitment services</p>
+        <a href="register.html" class="cta-btn">Get Started</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 RecruitPro. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

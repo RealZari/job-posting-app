@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #5191fd;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-right: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffeb3b;
+        }
+
+        .form-container {
+            background: white;
+            padding: 40px 20px;
+            margin: 40px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            text-align: left;
+            flex: 1;
+        }
+
+        .form-container h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-container input, .form-container textarea, .form-container select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .form-container textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn {
+            background-color: #5191fd;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #4071c8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4px;
+            background-color: #333;
+            color: white;
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">RecruitPro</div>
+        <nav>
+            <ul>
+                <li><a href="recruiter-dashboard.html">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="form-container">
+        <h2>Post a Job</h2>
+        <form id="job-post-form">
+            <label for="title">Job Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="salary">Job Salary (PKR):</label>
+            <input type="number" id="salary" name="salary" required>
+
+            <label for="description">Job Description:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <label for="experience">Candidate Experience (Years):</label>
+            <input type="number" id="experience" name="experience" required>
+
+            <label for="incentive">Incentive (PKR):</label>
+            <input type="number" id="incentive" name="incentive" required>
+
+            <button type="submit" class="btn">Post Job</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 RecruitPro. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('job-post-form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the default form submission
+            
+            const job = {
+                title: document.getElementById('title').value,
+                salary: document.getElementById('salary').value,
+                description: document.getElementById('description').value,
+                experience: document.getElementById('experience').value,
+                incentive: document.getElementById('incentive').value
+            };
+            
+            let jobs = JSON.parse(localStorage.getItem('jobs')) || [];
+            
+            // add new job to the jobs array
+            jobs.push(job);
+            
+            // save updated jobs array back to local storage
+            localStorage.setItem('jobs', JSON.stringify(jobs));
+            
+            // alert and redirect to the dashboard
+            alert("Job posted successfully!");
+            window.location.href = 'recruiter-dashboard.html';
+        });
+    </script>
+</body>
+</html>
